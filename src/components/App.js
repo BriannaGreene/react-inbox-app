@@ -1,8 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Messages from '../components/Messages'
 import './App.css';
 
 class App extends Component {
+  // make constructor
+  constructor(props) {
+    super(props)
+    this.state = { messages: props.messages }
+  }
+
+  // toggle property function
+
+  // toggle select function
+
+  // toggle star function
+
+  // mark as read function
+
+  // mark as unread function
+
+  // delete messages
+
+  // toggle select all
+
+  // apply label
+
+  // remove label
+
+  // render DOM stuff
   render() {
     return (
       <div className="App">
