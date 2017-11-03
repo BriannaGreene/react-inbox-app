@@ -59,6 +59,12 @@ class App extends Component {
   }
 
   // delete messages
+  deleteMessages() {
+    this.setState(prevState => {
+      const messages = prevState.messages.filter(message => !message.selected)
+      return { messages }
+    })
+  }
 
   // toggle select all
 
@@ -74,6 +80,7 @@ class App extends Component {
       </div>
     );
   }
+  
 }
 
 export default App;
