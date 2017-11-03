@@ -13,8 +13,8 @@ class App extends Component {
 
   // toggle property function
   toggleProperty(message, property) {
-    console.log('message from app js: ', message);
-    console.log('property from app js: ', property);
+    console.log('toggleProperty: message from app js: ', message);
+    console.log('toggleProperty: property from app js: ', property);
     this.setState(prevState => {
       const index = prevState.messages.indexOf(message)
       return {
@@ -29,11 +29,13 @@ class App extends Component {
 
   // toggle select function
   toggleSelect(message) {
+    console.log('toggleSelect: message from app.js: ', message);
     this.toggleProperty(message, 'selected')
   }
 
   // toggle star function
   toggleStar(message) {
+    console.log('toggleSelect: message from app.js: ', message);
     this.toggleProperty(message, 'starred')
   }
 
