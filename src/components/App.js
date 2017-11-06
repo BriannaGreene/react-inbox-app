@@ -25,7 +25,7 @@ class App extends Component {
         ]
       }
     })
-  }
+  } 
 
   // toggle select function
   toggleSelect(message) {
