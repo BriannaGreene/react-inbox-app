@@ -4,17 +4,38 @@ import Messages from '../components/Messages'
 import './App.css';
 
 class App extends Component {
-  // make constructor
-  constructor(props) {
-    super(props)
-    this.state = { messages: props.messages }
-    console.log('this.state from App.js: ', this.state);
+
+  state = {
+    messages: []
   }
+
+  async componentDidMount() {
+    const messages = await this.getMessages()
+    console.log('messages from componentDidMount: ', messages);
+
+    this.setState({
+      messages: messages
+    })
+  }
+
+  async getMessages() {
+    const response = await fetch('http://localhost:8082/api/messages')
+    const json = await response.json()
+    console.log('messages from app getMessages: ', json._embedded.messages);
+    return json._embedded.messages
+  }
+
+
+
+  // // make constructor
+  // constructor(props) {
+  //   super(props)
+  //   this.state = { messages: props.messages }
+  //   console.log('this.state from App.js: ', this.state);
+  // }
 
   // toggle property function
   toggleProperty(message, property) {
-    console.log('toggleProperty: message from app js: ', message);
-    console.log('toggleProperty: property from app js: ', property);
     this.setState(prevState => {
       const index = prevState.messages.indexOf(message)
       return {
@@ -25,17 +46,15 @@ class App extends Component {
         ]
       }
     })
-  } 
+  }
 
   // toggle select function
   toggleSelect(message) {
-    console.log('toggleSelect: message from app.js: ', message);
     this.toggleProperty(message, 'selected')
   }
 
   // toggle star function
   toggleStar(message) {
-    console.log('toggleSelect: message from app.js: ', message);
     this.toggleProperty(message, 'starred')
   }
 
