@@ -21,7 +21,7 @@ class App extends Component {
   async request(path, method = 'GET', body = null) {
     if (body) body = JSON.stringify(body)
     console.log('body from request: ', body)
-    return await fetch(`http://localhost:8082${path}`, {
+    return await fetch(`${process.env.REACT_APP_API_URL}${path}`, {
       method: method,
       headers: {
         'Content-Type': 'application/json',
@@ -163,7 +163,6 @@ class App extends Component {
       body: message.body,
     })
     const newMessage = await response.json()
-
     const messages = [...this.state.messages, newMessage]
     this.setState({
       messages,
